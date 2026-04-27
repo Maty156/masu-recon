@@ -1,0 +1,25 @@
+{
+  "module": "nmap",
+  "timestamp": "2026-04-26T21:15:34.444346",
+  "data": {
+    "ports": [
+      {
+        "port": 443,
+        "proto": "tcp",
+        "state": "open",
+        "service": "ssl/http",
+        "version": "Cloudflare http proxy",
+        "risk": "LOW"
+      },
+      {
+        "port": 8443,
+        "proto": "tcp",
+        "state": "open",
+        "service": "ssl/http",
+        "version": "Cloudflare http proxy",
+        "risk": "MEDIUM"
+      }
+    ],
+    "open_count": 2
+  }
+}

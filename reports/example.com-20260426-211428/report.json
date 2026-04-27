@@ -1,0 +1,136 @@
+{
+  "tool": "MASU Recon v1.0",
+  "target": "example.com",
+  "timestamp": "20260426-211428",
+  "generated": "2026-04-26T21:15:34.589038",
+  "modules": {
+    "whois": {
+      "module": "whois",
+      "timestamp": "2026-04-26T21:14:34.667432",
+      "data": {
+        "Domain Name": "EXAMPLE.COM",
+        "Registrar": "RESERVED-Internet Assigned Numbers Authority",
+        "Created": "1995-08-14T04:00:00Z",
+        "Expires": "2026-08-13T04:00:00Z",
+        "Updated": "2026-01-16T18:26:50Z",
+        "Name Servers": [
+          "elliott.ns.cloudflare.com",
+          "hera.ns.cloudflare.com"
+        ],
+        "Status": "clientDeleteProhibited https://icann.org/epp#clientDeleteProhibited",
+        "DNSSEC": "signedDelegation"
+      }
+    },
+    "dns": {
+      "module": "dns",
+      "timestamp": "2026-04-26T21:14:35.794633",
+      "data": {
+        "A": [
+          "172.66.147.243",
+          "104.20.23.154"
+        ],
+        "AAAA": [
+          "2606:4700:10::ac42:93f3",
+          "2606:4700:10::6814:179a"
+        ],
+        "MX": [
+          "0 ."
+        ],
+        "NS": [
+          "hera.ns.cloudflare.com.",
+          "elliott.ns.cloudflare.com."
+        ],
+        "TXT": [
+          "\"_k2n1y4vw3qtb4skdx9e7dxt97qrmmq9\"",
+          "\"v=spf1 -all\""
+        ],
+        "SOA": [
+          "elliott.ns.cloudflare.com. dns.cloudflare.com. 2401773869 10000 2400 604800 1800"
+        ]
+      }
+    },
+    "subdomains": {
+      "module": "subdomains",
+      "timestamp": "2026-04-26T21:14:37.056657",
+      "data": {
+        "found": [
+          {
+            "subdomain": "www.example.com",
+            "ips": [
+              "172.66.147.243",
+              "104.20.23.154"
+            ]
+          }
+        ],
+        "total": 1
+      }
+    },
+    "headers": {
+      "module": "headers",
+      "timestamp": "2026-04-26T21:14:37.384296",
+      "data": {
+        "url": "https://example.com",
+        "status": 200,
+        "headers": {
+          "Server": "cloudflare",
+          "Content-Type": "text/html"
+        },
+        "security": {
+          "Strict-Transport-Security": {
+            "present": false
+          },
+          "Content-Security-Policy": {
+            "present": false
+          },
+          "X-Frame-Options": {
+            "present": false
+          },
+          "X-Content-Type-Options": {
+            "present": false
+          },
+          "X-XSS-Protection": {
+            "present": false
+          },
+          "Referrer-Policy": {
+            "present": false
+          },
+          "Permissions-Policy": {
+            "present": false
+          },
+          "Cross-Origin-Opener-Policy": {
+            "present": false
+          },
+          "Cross-Origin-Resource-Policy": {
+            "present": false
+          }
+        },
+        "security_score": 0
+      }
+    },
+    "nmap": {
+      "module": "nmap",
+      "timestamp": "2026-04-26T21:15:34.444346",
+      "data": {
+        "ports": [
+          {
+            "port": 443,
+            "proto": "tcp",
+            "state": "open",
+            "service": "ssl/http",
+            "version": "Cloudflare http proxy",
+            "risk": "LOW"
+          },
+          {
+            "port": 8443,
+            "proto": "tcp",
+            "state": "open",
+            "service": "ssl/http",
+            "version": "Cloudflare http proxy",
+            "risk": "MEDIUM"
+          }
+        ],
+        "open_count": 2
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "module": "whois",
+  "timestamp": "2026-04-26T21:14:34.667432",
+  "data": {
+    "Domain Name": "EXAMPLE.COM",
+    "Registrar": "RESERVED-Internet Assigned Numbers Authority",
+    "Created": "1995-08-14T04:00:00Z",
+    "Expires": "2026-08-13T04:00:00Z",
+    "Updated": "2026-01-16T18:26:50Z",
+    "Name Servers": [
+      "elliott.ns.cloudflare.com",
+      "hera.ns.cloudflare.com"
+    ],
+    "Status": "clientDeleteProhibited https://icann.org/epp#clientDeleteProhibited",
+    "DNSSEC": "signedDelegation"
+  }
+}

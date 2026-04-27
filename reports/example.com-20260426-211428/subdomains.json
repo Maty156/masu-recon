@@ -1,0 +1,16 @@
+{
+  "module": "subdomains",
+  "timestamp": "2026-04-26T21:14:37.056657",
+  "data": {
+    "found": [
+      {
+        "subdomain": "www.example.com",
+        "ips": [
+          "172.66.147.243",
+          "104.20.23.154"
+        ]
+      }
+    ],
+    "total": 1
+  }
+}

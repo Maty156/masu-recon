@@ -1,0 +1,42 @@
+{
+  "module": "headers",
+  "timestamp": "2026-04-26T21:14:37.384296",
+  "data": {
+    "url": "https://example.com",
+    "status": 200,
+    "headers": {
+      "Server": "cloudflare",
+      "Content-Type": "text/html"
+    },
+    "security": {
+      "Strict-Transport-Security": {
+        "present": false
+      },
+      "Content-Security-Policy": {
+        "present": false
+      },
+      "X-Frame-Options": {
+        "present": false
+      },
+      "X-Content-Type-Options": {
+        "present": false
+      },
+      "X-XSS-Protection": {
+        "present": false
+      },
+      "Referrer-Policy": {
+        "present": false
+      },
+      "Permissions-Policy": {
+        "present": false
+      },
+      "Cross-Origin-Opener-Policy": {
+        "present": false
+      },
+      "Cross-Origin-Resource-Policy": {
+        "present": false
+      }
+    },
+    "security_score": 0
+  }
+}

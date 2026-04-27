@@ -1,0 +1,21 @@
+MASU Recon Report
+Target:    example.com
+Date:      Sun Apr 26 06:03:16 PM EAT 2026
+═══════════════════════════════════════
+
+[1m[0;34m━━━ WHOIS Lookup ━━━[0m
+[0;31m[✗][0m WHOIS failed: Command '['whois', 'example.com']' returned non-zero exit status 2.
+
+[1m[0;34m━━━ DNS Enumeration ━━━[0m
+  [2mA      — no records[0m
+  [2mAAAA   — no records[0m
+  [2mMX     — no records[0m
+  [2mNS     — no records[0m
+  [2mTXT    — no records[0m
+  [2mCNAME  — no records[0m
+  [2mSOA    — no records[0m
+  [2mPTR    — no records[0m
+
+  [1m[0;36mZone Transfer (AXFR):[0m
+[1;33m[!][0m No NS records found for zone transfer attempt
+[1;33m[!][0m No DNS records found
