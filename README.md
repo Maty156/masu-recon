@@ -9,8 +9,8 @@
 ╚═╝     ╚═╝╚═╝  ╚═╝╚══════╝ ╚═════╝
 ```
 
-**MASU Recon v1.0** — A clean, modular reconnaissance tool for ethical hacking and CTFs.  
-Built with Bash + Python. Outputs to terminal with full color, saves reports as TXT + JSON.
+**MASU Recon v1.0** — A small, modular reconnaissance tool for ethical hacking and CTFs.
+Built with Bash + Python. Includes a new enhanced Python CLI (`masu_cli.py`) with a nicer terminal UI (Click + Rich), interactive selection, concurrent execution and aggregated JSON reporting.
 
 ---
 
@@ -29,37 +29,51 @@ Built with Bash + Python. Outputs to terminal with full color, saves reports as 
 
 ## Installation
 
+Clone and make the shell launcher executable:
+
 ```bash
 git clone https://github.com/Maty156/masu-recon.git
 cd masu-recon
 chmod +x masu-recon.sh
+```
 
-# Install dependencies (Arch)
+System packages (example for Arch/Manjaro):
+
+```bash
 sudo pacman -S nmap whois bind-tools curl traceroute python
+```
 
-# Install Python dependencies
-pip install requests dnspython
+Python dependencies for the enhanced CLI (`masu_cli.py`):
+
+```bash
+python3 -m pip install -r requirements.txt
 ```
 
 ---
 
 ## Usage
 
+Shell launcher (original):
+
 ```bash
-# Run all modules
 ./masu-recon.sh example.com --all
-
-# Run all + save report
-./masu-recon.sh example.com --all -o
-
-# Run specific modules
-./masu-recon.sh example.com --whois --dns --headers
-
-# Scan an IP
-./masu-recon.sh 192.168.1.1 --nmap --traceroute
-
-# Save output to reports/
 ./masu-recon.sh example.com --nmap --subdomains -o
+```
+
+New Python CLI (recommended) — list modules, run scans, or use interactive mode:
+
+```bash
+# List available modules
+python3 masu_cli.py list
+
+# Run modules (comma separated or 'all') and save reports
+python3 masu_cli.py scan example.com --modules nmap,dns --save --report-dir reports/example.com-quick
+
+# Interactive selection
+python3 masu_cli.py interactive example.com --save --report-dir reports/example.com-quick
+
+# Use concurrent execution (speed up multiple modules)
+python3 masu_cli.py scan example.com --modules all --save --report-dir reports/example.com-quick --concurrent
 ```
 
 ---
@@ -85,14 +99,18 @@ reports/
 
 ## Dependencies
 
-| Tool | Install |
-|------|---------|
-| `nmap` | `sudo pacman -S nmap` |
-| `whois` | `sudo pacman -S whois` |
-| `dig` | `sudo pacman -S bind-tools` |
-| `traceroute` | `sudo pacman -S traceroute` |
-| `python3` | `sudo pacman -S python` |
-| `dnspython` | `pip install dnspython` |
+Core system tools and Python packages (examples):
+
+```bash
+# system
+sudo pacman -S nmap whois bind-tools curl traceroute python
+
+# python (for original modules)
+python3 -m pip install requests dnspython
+
+# python (for enhanced CLI)
+python3 -m pip install -r requirements.txt
+```
 
 ---
 
