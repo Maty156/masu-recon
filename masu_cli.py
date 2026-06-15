@@ -15,6 +15,7 @@ import click
 from rich.console import Console
 from rich.table import Table
 from rich.progress import Progress, SpinnerColumn, TextColumn
+from typing import Optional
 
 console = Console()
 
@@ -86,6 +87,61 @@ def scan(target, modules_opt, report_dir, save):
         os.makedirs(report_dir, exist_ok=True)
 
     _run_modules(mods, target, report_dir if report_dir else None, save)
+
+
+@cli.command("interactive")
+@click.argument("target")
+@click.option("--report-dir", default="", help="Directory to save module reports")
+@click.option("--save/--no-save", default=False, help="Save reports to disk (enables --report-dir)")
+def interactive(target: str, report_dir: str, save: bool):
+    """Interactive module selection UI for TARGET"""
+    mods = available_modules()
+    if not mods:
+        console.print("[red]No available modules.[/red]")
+        return
+
+    table = Table(title=f"Modules (target: {target})")
+    table.add_column("#", style="magenta", no_wrap=True)
+    table.add_column("Module", style="cyan")
+    for i, m in enumerate(mods, start=1):
+        table.add_row(str(i), m)
+    console.print(table)
+
+    prompt = "Enter module numbers separated by comma, or 'all' (e.g. 1,3,4): "
+    choice = console.input(f"[bold yellow]{prompt}[/bold yellow]")
+    if not choice:
+        console.print("[red]No selection made.[/red]")
+        return
+
+    if choice.strip().lower() == "all":
+        sel = mods
+    else:
+        parts = [p.strip() for p in choice.split(",") if p.strip()]
+        idxs = []
+        invalid = []
+        for p in parts:
+            if not p.isdigit():
+                invalid.append(p)
+                continue
+            n = int(p)
+            if n < 1 or n > len(mods):
+                invalid.append(p)
+            else:
+                idxs.append(n - 1)
+        if invalid:
+            console.print(f"[red]Invalid selection:[/red] {', '.join(invalid)}")
+            return
+        # preserve order and dedupe
+        sel = []
+        for i in idxs:
+            if mods[i] not in sel:
+                sel.append(mods[i])
+
+    if save and not report_dir:
+        report_dir = os.path.join(os.getcwd(), "reports", f"{target}-cli")
+        os.makedirs(report_dir, exist_ok=True)
+
+    _run_modules(sel, target, report_dir if report_dir else None, save)
 
 
 if __name__ == "__main__":
